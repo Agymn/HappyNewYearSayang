@@ -58,7 +58,7 @@
     </style>
 </head>
 <body>
-    <h1>Happy New Year, My Love! 🎉</h1>
+    <h1 id="message">Happy New Year, My Love! 🎉</h1>
     <button onclick="showMessage()">Click Me for a Surprise!</button>
     <canvas id="fireworksCanvas"></canvas>
 
@@ -68,6 +68,15 @@
 
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
+
+        const messages = [
+            "This year has been a rollercoaster, but I’m grateful for all the moments we shared.",
+            "and I just want to say I’m sorry for the mistakes I made and thank you for everything.",
+            "Happy New Year once again! Wishing us both happiness and love in the days ahead, and hoping our paths bring us closer again.",
+            "Let's make this year unforgettable together! ❤"
+        ];
+
+        let messageIndex = 0;
 
         class Particle {
             constructor(x, y, color, speed, angle) {
@@ -149,7 +158,12 @@
         animate();
 
         function showMessage() {
-            alert("Thank you for being the light of my life. Let's make this year unforgettable together! ❤");
+            if (messageIndex < messages.length) {
+                document.getElementById('message').textContent = messages[messageIndex];
+                messageIndex++;
+            } else {
+                alert("That's all for now. Happy New Year!");
+            }
         }
 
         window.addEventListener('resize', () => {
